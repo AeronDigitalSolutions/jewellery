@@ -2,6 +2,10 @@
   padding: 40px 20px;
   text-align: center;
   background: #ffffff;
+   background-image: url("/assets/backgroundImg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .title {
