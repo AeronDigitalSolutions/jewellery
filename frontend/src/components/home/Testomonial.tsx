@@ -35,24 +35,20 @@ export default function Testomonial() {
   useEffect(() => {
     const slide = setInterval(() => {
       setStartIndex((prev) => (prev + 1) % testimonials.length);
-    }, 2500); // 2.5 second slide
+    }, 2500);
+
     return () => clearInterval(slide);
   }, []);
-
-  const visibleTestimonials = () => {
-    return [
-      testimonials[startIndex],
-      testimonials[(startIndex + 1) % testimonials.length],
-      testimonials[(startIndex + 2) % testimonials.length],
-    ];
-  };
 
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>What Our Customers Say</h2>
 
-      <div className={styles.slider}>
-        {visibleTestimonials().map((review, index) => (
+      <div
+        className={styles.slider}
+        style={{ transform: `translateX(-${startIndex * 100}%)` }}
+      >
+        {testimonials.map((review, index) => (
           <div key={index} className={styles.card}>
             <img src={review.image} className={styles.image} />
             <h3 className={styles.name}>{review.name}</h3>
