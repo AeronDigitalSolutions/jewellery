@@ -1,0 +1,128 @@
+/* DARK BLURRED OVERLAY */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 200;
+  animation: fadeIn 0.4s ease;
+}
+
+/* GLASSMORPHIC POPUP BOX */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 380px;
+  padding: 30px 25px;
+  backdrop-filter: blur(25px);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 18px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  transform: translate(-50%, -50%) scale(0.7);
+  animation: popupIn 0.35s forwards ease;
+  z-index: 300;
+  text-align: center;
+}
+
+/* POPUP ANIMATION */
+@keyframes popupIn {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* CLOSE ICON */
+.close {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close:hover {
+  color: #ffb3b3;
+}
+
+/* TITLE */
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #f1f1f1;
+  margin-bottom: 18px;
+}
+
+/* FORM INPUTS */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.input {
+  padding: 12px 14px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.25);
+  color: white;
+  outline: none;
+  transition: 0.3s;
+}
+
+.input::placeholder {
+  color: #eee;
+}
+
+.input:focus {
+  border-color: #ffccdd;
+  background: rgba(255,255,255,0.35);
+}
+
+/* BUTTON */
+.submitBtn {
+  padding: 12px;
+  font-size: 18px;
+  border-radius: 10px;
+  color: white;
+  background: linear-gradient(135deg, #800000, #c00000);
+  border: none;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submitBtn:hover {
+  background: linear-gradient(135deg, #a00000, #ff0033);
+}
+
+/* MOBILE */
+@media (max-width: 430px) {
+  .popup {
+    width: 90%;
+    padding: 22px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+}

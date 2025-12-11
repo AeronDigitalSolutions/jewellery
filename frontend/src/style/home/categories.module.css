@@ -1,0 +1,123 @@
+.container {
+  padding: 40px 20px;
+  text-align: center;
+  background: #ffffff;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #800000;
+  margin-bottom: 25px;
+}
+
+/* DEFAULT DESKTOP GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 3px solid #800000;
+  background: #FFF1F4;
+  padding: 5px;
+  object-fit: cover;
+  transition: 0.3s ease;
+}
+
+.image:hover {
+  border-color: #D2042D;
+  transform: scale(1.08);
+}
+
+.name {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+}
+
+.button {
+  padding: 12px 24px;
+  background: #D2042D;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background: #800000;
+}
+
+/* ------------------------------------ */
+/* RESPONSIVE */
+/* ------------------------------------ */
+
+/* 🔹 Medium screens — Tablets (3 columns) */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .image {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* 🔹 Small Tablets / Large Phones (2 columns) */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .image {
+    width: 95px;
+    height: 95px;
+  }
+
+  .name {
+    font-size: 16px;
+  }
+}
+
+/* 🔹 Mobile Phones (2 columns, smaller images) */
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .name {
+    font-size: 15px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+}

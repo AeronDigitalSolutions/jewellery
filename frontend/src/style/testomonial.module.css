@@ -1,0 +1,83 @@
+.container {
+  padding: 40px 20px;
+  text-align: center;
+  overflow: hidden;
+  
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #800000;
+  margin-bottom: 25px;
+}
+
+/* SLIDER WRAPPER */
+.slider {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  transition: transform 0.6s ease-in-out;
+}
+
+/* CARD */
+.card {
+  width: 300px;
+  padding: 20px;
+  background: #fff;
+  border: 2px solid #d2042d;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* IMAGE */
+.image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #800000;
+  margin-bottom: 15px;
+}
+
+/* NAME */
+.name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #800000;
+  margin-bottom: 10px;
+}
+
+/* TEXT */
+.text {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.5;
+}
+
+
+/* ============ RESPONSIVE ============ */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .slider {
+    gap: 15px;
+  }
+
+  .card {
+    width: 45%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .slider {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+  }
+}

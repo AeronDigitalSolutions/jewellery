@@ -1,0 +1,70 @@
+.banner {
+  width: 100%;
+  height: 60vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  height: 100%;
+  transition: transform 0.6s ease-in-out;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* ARROWS */
+.arrowLeft,
+.arrowRight {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  padding: 10px;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  font-size: 24px;
+}
+
+.arrowLeft { left: 10px; }
+.arrowRight { right: 10px; }
+
+/* DOTS */
+.dots {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  text-align: center;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: white;
+  display: inline-block;
+  border-radius: 50%;
+  margin: 0 5px;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.activeDot {
+  opacity: 1;
+  background: #800000;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .banner { height: 35vh; }
+  .arrowLeft, .arrowRight {
+    padding: 6px;
+    font-size: 20px;
+  }
+}
