@@ -1,0 +1,307 @@
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.title {
+  font-size: 28px;
+  color: #C724B1;
+  margin-bottom: 25px;
+}
+
+/* EMPTY */
+.empty {
+  text-align: center;
+  padding: 60px;
+}
+
+.empty a {
+  color: #C724B1;
+  font-weight: 600;
+}
+
+/* LIST */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.card {
+  display: flex;
+  gap: 20px;
+  padding: 18px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.info {
+  flex: 1;
+}
+
+.info h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.price {
+  color: #C724B1;
+  font-weight: 700;
+  margin: 6px 0;
+}
+
+/* QTY */
+.qtyRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.qtyRow button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  background: #C724B1;
+  color: #fff;
+  cursor: pointer;
+}
+
+.qtyRow span {
+  min-width: 24px;
+  text-align: center;
+}
+
+/* REMOVE */
+.removeBtn {
+  background: transparent;
+  border: none;
+  color: #9a248a;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* SUMMARY */
+.summary {
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  text-align: right;
+}
+
+.total {
+  font-size: 22px;
+  color: #C724B1;
+  margin: 10px 0;
+}
+
+.checkoutBtn {
+  padding: 12px 26px;
+  background: #C724B1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.checkoutBtn:hover {
+  background: #9a248a;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .summary {
+    text-align: center;
+  }
+}
+.container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #C724B1;
+}
+
+/* EMPTY CART */
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  border: 2px dashed #ddd;
+  border-radius: 12px;
+}
+
+.empty p {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+/* CART LIST */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* CART CARD */
+.card {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* INFO */
+.info {
+  flex: 1;
+}
+
+.info h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.info p {
+  font-size: 14px;
+  color: #555;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 700;
+  color: #C724B1;
+  margin: 8px 0;
+}
+
+/* QUANTITY */
+.qtyRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.qtyRow button {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: none;
+  background: #eee;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.qtyRow span {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* REMOVE */
+.removeBtn {
+  background: transparent;
+  border: none;
+  color: #9a248a;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* SUMMARY */
+.summary {
+  margin-top: 30px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  max-width: 420px;
+  margin-left: auto;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 15px;
+}
+
+.grandTotal {
+  font-size: 18px;
+  font-weight: 700;
+  border-top: 1px solid #ddd;
+  margin-top: 10px;
+  padding-top: 12px;
+}
+
+/* CHECKOUT */
+.checkoutBtn {
+  width: 100%;
+  margin-top: 18px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #C724B1, #9a248a);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.checkoutBtn:hover {
+  transform: scale(1.02);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .image {
+    width: 160px;
+    height: 160px;
+  }
+
+  .summary {
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .qtyRow {
+    justify-content: center;
+  }
+}

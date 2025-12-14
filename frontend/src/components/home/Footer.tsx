@@ -1,41 +1,54 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import styles from "@/style/home/footer.module.css";
 
+const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+
 export default function Footer() {
+  const [data, setData] = useState<any>(null);
+
+  useEffect(() => {
+    fetch(`${API}/api/footer`)
+      .then(res => res.json())
+      .then(setData);
+  }, []);
+
   return (
     <footer className={styles.footer}>
-
-      {/* LEFT SECTION */}
+      {/* LEFT */}
       <div className={styles.left}>
         <h2 className={styles.logo}>Jwellery</h2>
         <p className={styles.desc}>
-          Your trusted partner for premium jewellery collections.  
-          We craft elegance with passion and deliver timeless beauty.
+          Your trusted partner for premium jewellery collections.
         </p>
       </div>
 
-      {/* CENTER LINKS */}
+      {/* CENTER */}
       <div className={styles.center}>
         <h3 className={styles.heading}>Quick Links</h3>
-
         <ul className={styles.links}>
           <li>Home</li>
-          <li>About Us</li>
+          <li>About</li>
           <li>Categories</li>
-          <li>Top Products</li>
           <li>Contact</li>
-          <li>Terms & Conditions</li>
         </ul>
       </div>
 
-      {/* RIGHT CONTACT DETAILS */}
+      {/* RIGHT */}
       <div className={styles.right}>
         <h3 className={styles.heading}>Contact Us</h3>
 
-        <p className={styles.info}>📍 123 Gold Street, Jaipur, India</p>
-        <p className={styles.info}>📞 +91 98765 43210</p>
-        <p className={styles.info}>📧 support@jwellery.com</p>
+        <p className={styles.info}>
+          📍 {data?.address || "Loading..."}
+        </p>
+        <p className={styles.info}>
+          📞 {data?.phone || ""}
+        </p>
+        <p className={styles.info}>
+          📧 {data?.email || ""}
+        </p>
       </div>
-
     </footer>
   );
 }

@@ -1,0 +1,75 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(#ffe5e9, #ffffff);
+  padding: 20px;
+}
+
+.card {
+  width: 100%;
+  max-width: 380px;
+  background: white;
+  padding: 35px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #C724B1;
+  margin-bottom: 20px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.input:focus {
+  border-color: #C724B1;
+  outline: none;
+}
+
+.button {
+  width: 100%;
+  padding: 12px;
+  background: #C724B1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background: #9a248a;
+}
+
+.msg {
+  background: #ffe3e3;
+  color: #C724B1;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.switch {
+  margin-top: 12px;
+  font-size: 15px;
+}
+
+.switch span {
+  color: #C724B1;
+  font-weight: bold;
+  cursor: pointer;
+}

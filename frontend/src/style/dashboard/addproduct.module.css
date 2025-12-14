@@ -1,0 +1,76 @@
+.card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+  border-left: 6px solid #C724B1;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #C724B1;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form input,
+.form select,
+.form textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #d8d8d8;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+  border-color: #C724B1;
+}
+/* 
+textarea {
+  min-height: 90px;
+} */
+
+.submitBtn {
+  background: #C724B1;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.submitBtn:hover {
+  background: #9a248a;
+}
+
+.previewBox {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.preview {
+  width: 90px;
+  height: 90px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 2px solid #C724B1;
+}

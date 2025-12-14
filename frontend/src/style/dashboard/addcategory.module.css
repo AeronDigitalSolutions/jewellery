@@ -1,0 +1,141 @@
+/* MAIN WRAPPER */
+.wrapper {
+  display: flex;
+  gap: 30px;
+  padding: 20px;
+}
+
+/* FORM CARD */
+.card {
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #C724B1;
+  margin-bottom: 15px;
+}
+
+/* FORM INPUTS */
+.form input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.form button {
+  width: 100%;
+  padding: 12px;
+  background: #C724B1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.form button:hover {
+  background: #9a248a;
+}
+
+.cancelBtn {
+  margin-top: 10px;
+  background: #bbbbbb !important;
+  color: #222 !important;
+}
+
+/* IMAGE PREVIEW */
+.preview {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border: 2px solid #C724B1;
+}
+
+/* CATEGORY LIST */
+.listCard {
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.listTitle {
+  font-size: 20px;
+  color: #C724B1;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+/* EACH ROW */
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid #eee;
+  padding: 12px 0;
+}
+
+/* CATEGORY ID */
+.catId {
+  width: 80px;
+  font-weight: bold;
+  color: #C724B1;
+}
+
+/* CATEGORY IMAGE */
+.listImg {
+  width: 55px;
+  height: 55px;
+  border-radius: 6px;
+  object-fit: cover;
+  border: 2px solid #C724B1;
+}
+
+/* CATEGORY NAME */
+.catName {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* ACTION BUTTONS */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.editBtn {
+  padding: 6px 12px;
+  background: #008080;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.deleteBtn {
+  padding: 6px 12px;
+  background: #9a248a;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* MOBILE FRIENDLY */
+@media (max-width: 900px) {
+  .wrapper {
+    flex-direction: column;
+  }
+}

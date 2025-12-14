@@ -2,7 +2,8 @@
 .navbar {
   width: 100%;
   padding: 15px 30px;
-  background:#FDEFE9 !important; /* UPDATED COLOR */
+  background:#f8d8f4
+ !important; /* UPDATED COLOR */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,6 +12,7 @@
   top: 0;
   z-index: 100;
   box-sizing: border-box;
+  border-radius: 8px;
 }
 
 /* LEFT LOGO AREA */
@@ -21,18 +23,13 @@
 }
 
 .logoImg {
-  width: 45px;
-  height: 45px;
+  width: 191px;
+  height: 63px;
   object-fit: cover;
   border-radius: 8px;
-  border: 2px solid #800000;
+  /* border: 2px solid #800000; */
 }
 
-.logoText {
-  font-size: 24px;
-  font-weight: 700;
-  color: #800000;
-}
 
 /* CENTER MENU */
 .menu {
@@ -59,12 +56,12 @@
   left: 0;
   width: 0%;
   height: 2px;
-  background: #681016; /* DARK MAROON */
+  background: #9a248a; /* DARK MAROON */
   transition: width 0.3s ease;
 }
 
 .menu li a:hover {
-  color: #681016;
+  color: #C724B1;
 }
 
 .menu li a:hover::after {
@@ -81,13 +78,14 @@
 /* SIGN IN BUTTON */
 .signInBtn {
   padding: 8px 18px;
-  background: #800000;
+  background: #C724B1;
   color: #fff;
   border: none;
   border-radius: 6px;
   font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
+  display: none;
 }
 
 .signInBtn:hover {
@@ -110,7 +108,7 @@
   position: absolute;
   top: -8px;
   right: -10px;
-  background: #D2042D;
+  background: #C724B1;
   color: white;
   font-size: 12px;
   padding: 2px 6px;
@@ -182,21 +180,21 @@
   font-size: 32px;
   cursor: pointer;
   margin-left: auto;
-  color: #681016;
+  color: #C724B1;
 }
 
 /* MOBILE MENU LINKS */
 .mobileMenu a {
   font-size: 20px;
   text-decoration: none;
-  color: #681016;
+  color: #C724B1;
   font-weight: 600;
   padding: 5px 0;
   transition: 0.3s;
 }
 
 .mobileMenu a:hover {
-  color: #D2042D;
+  color: #9a248a;
 }
 
 /* MOBILE SIGN IN BUTTON */
@@ -209,4 +207,5 @@
   border-radius: 6px;
   font-size: 18px;
   cursor: pointer;
+  display: none;
 }

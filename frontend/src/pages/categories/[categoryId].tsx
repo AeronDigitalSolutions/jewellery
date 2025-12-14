@@ -1,5 +1,4 @@
-"use client";
-
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Header from "@/components/home/Header";
 import Footer from "@/components/home/Footer";
@@ -9,14 +8,25 @@ import styles from "@/style/home/topproducts.module.css";
 
 const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
-export default function AllProductsPage() {
+export default function CategoryProductsPage() {
+  const router = useRouter();
+  const { categoryId } = router.query;
+
   const [products, setProducts] = useState<any[]>([]);
+  const [categoryName, setCategoryName] = useState("");
 
   useEffect(() => {
-    fetch(`${API}/api/products`)
+    if (!categoryId) return;
+
+    fetch(`${API}/api/products?category=${categoryId}`)
       .then(res => res.json())
-      .then(setProducts);
-  }, []);
+      .then(data => {
+        setProducts(data);
+        if (data?.[0]?.category?.name) {
+          setCategoryName(data[0].category.name);
+        }
+      });
+  }, [categoryId]);
 
   const addToCart = (product: any) => {
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -51,14 +61,16 @@ export default function AllProductsPage() {
   };
 
   const formatPrice = (p: any) =>
-    Number(p?.totalPrice ?? 0).toLocaleString("en-IN");
+    Number(p?.totalPrice || 0).toLocaleString("en-IN");
 
   return (
     <>
       <Header />
 
       <div className={styles.container}>
-        <h2 className={styles.title}>All Products</h2>
+        <h2 className={styles.title}>
+          {categoryName || "Category Products"}
+        </h2>
 
         <div className={styles.grid}>
           {products.map(p => (

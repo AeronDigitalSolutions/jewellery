@@ -1,0 +1,69 @@
+.wrapper {
+  padding: 20px;
+}
+
+.card {
+  padding: 20px;
+  background: #fff;
+  border: 2px solid #C724B1;
+  border-radius: 12px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #C724B1;
+  margin-bottom: 20px;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.catId {
+  font-size: 14px;
+  color: gray;
+  width: 100px;
+}
+
+.listImg {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.catName {
+  flex: 1;
+  font-size: 18px;
+}
+
+.actions button {
+  padding: 8px 12px;
+  margin-left: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+}
+
+.editBtn {
+  background: #008080;
+  color: white;
+}
+
+.deleteBtn {
+  background: #9a248a;
+  color: white;
+}
+
+.editBtn:hover {
+  background: #006666;
+}
+
+.deleteBtn:hover {
+  background: #C724B1;
+}

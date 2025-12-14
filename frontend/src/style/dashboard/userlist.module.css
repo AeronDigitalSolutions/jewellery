@@ -1,0 +1,150 @@
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #C724B1;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.search {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.exportBtn {
+  padding: 8px 14px;
+  border: none;
+  background: #C724B1;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.exportBtn:hover {
+  background: #9a248a;
+}
+
+/* TABLE */
+.table {
+  width: 100%;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1.2fr 2fr 1.2fr 0.8fr; /* ✅ FIXED */
+  padding: 12px 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 15px;
+  align-items: center;
+}
+
+.head {
+  font-weight: 700;
+  background: #f9f1f1;
+  color: #C724B1;
+}
+
+.row span {
+  word-break: break-word;
+}
+
+.empty {
+  text-align: center;
+  padding: 20px;
+  color: gray;
+}
+
+/* ACTION COLUMN */
+.actionCol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* DELETE BUTTON */
+.deleteBtn {
+  background: #C724B1;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.deleteBtn:hover {
+  background: #9a248a;
+  transform: scale(1.05);
+}
+
+.deleteBtn:active {
+  transform: scale(0.95);
+}
+
+/* PAGINATION */
+.pagination {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  align-items: center;
+}
+
+.pagination button {
+  padding: 6px 14px;
+  border: none;
+  background: #C724B1;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .head {
+    display: none;
+  }
+
+  .row span::before {
+    font-weight: bold;
+    display: block;
+  }
+
+  .actionCol {
+    justify-content: flex-start;
+  }
+}

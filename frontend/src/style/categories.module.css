@@ -7,7 +7,7 @@
   text-align: center;
   font-size: 30px;
   font-weight: 700;
-  color: #800000;
+  color: #C724B1;
   margin-bottom: 30px;
 }
 
@@ -33,7 +33,7 @@
 
 .card:hover {
   transform: translateY(-5px);
-  border-color: #d2042d;
+  border-color: #9a248a;
   box-shadow: 0 6px 18px rgba(210, 4, 45, 0.15);
 }
 
@@ -43,14 +43,14 @@
   height: 140px;
   border-radius: 10px;           /* SQUARE */
   object-fit: cover;
-  border: 2px solid #800000;
+  border: 2px solid #C724B1;
   margin-bottom: 12px;
   transition: 0.3s ease-in-out;
 }
 
 .card:hover .image {
   transform: scale(1.05);
-  border-color: #d2042d;
+  border-color: #9a248a;
 }
 
 /* NAME */
