@@ -94,12 +94,12 @@ export default function Login() {
         </p>
 
         {/* Signup */}
-        <p className={styles.footerText}>
+        {/* <p className={styles.footerText}>
           Don’t have an account?
           <Link href="/signup" className={styles.link}>
             Sign Up
-          </Link>
-        </p>
+          </Link> */}
+        {/* </p> */}
       </form>
     </div>
   );
