@@ -133,3 +133,19 @@
   background: #C724B1;
   color: #fff;
 }
+.logoutBtn {
+  margin-top: auto;
+  padding: 12px;
+  background: #c724b1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  width: 100%;
+  transition: 0.3s ease;
+}
+
+.logoutBtn:hover {
+  background: #9a248a;
+}

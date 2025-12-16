@@ -26,6 +26,12 @@ export default function Dashboard() {
     categories: 0,
   });
 
+  const handleLogout = () => {
+  localStorage.removeItem("token");
+  router.replace("/login");
+};
+
+
   // 🔐 AUTH CHECK
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -124,21 +130,31 @@ export default function Dashboard() {
   return (
     <div className={styles.wrapper}>
       {/* SIDEBAR */}
-      <div className={styles.sidebar}>
-        <h2 className={styles.sidebarTitle}>Admin Panel</h2>
+      {/* SIDEBAR */}
+<div className={styles.sidebar}>
+  <h2 className={styles.sidebarTitle}>Admin Panel</h2>
 
-        {menu.map(item => (
-          <div
-            key={item.id}
-            className={`${styles.menuItem} ${
-              active === item.id ? styles.active : ""
-            }`}
-            onClick={() => setActive(item.id)}
-          >
-            {item.name}
-          </div>
-        ))}
-      </div>
+  {menu.map(item => (
+    <div
+      key={item.id}
+      className={`${styles.menuItem} ${
+        active === item.id ? styles.active : ""
+      }`}
+      onClick={() => setActive(item.id)}
+    >
+      {item.name}
+    </div>
+  ))}
+
+  {/* LOGOUT BUTTON */}
+  <button
+    className={styles.logoutBtn}
+    onClick={handleLogout}
+  >
+    Logout
+  </button>
+</div>
+
 
       {/* MAIN CONTENT */}
       <div className={styles.content}>{renderComponent()}</div>
