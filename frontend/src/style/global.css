@@ -1,0 +1,28 @@
+/* GLOBAL RESET */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Prevent flex children from overflowing */
+img,
+video,
+iframe {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Fix sliders & carousels */
+[class*="slider"],
+[class*="container"] {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
