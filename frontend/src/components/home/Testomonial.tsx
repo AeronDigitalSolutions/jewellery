@@ -32,35 +32,47 @@ const testimonials = [
 ];
 
 export default function Testomonial() {
-  const [index, setIndex] = useState(0);
+  const [start, setStart] = useState(0);
+  const [perView, setPerView] = useState(3);
 
+  // 🔁 Responsive count
+  useEffect(() => {
+    const updateView = () => {
+      if (window.innerWidth <= 600) setPerView(1);
+      else if (window.innerWidth <= 992) setPerView(2);
+      else setPerView(3);
+    };
+
+    updateView();
+    window.addEventListener("resize", updateView);
+    return () => window.removeEventListener("resize", updateView);
+  }, []);
+
+  // 🔁 Rotate testimonials (NO SLIDE)
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex(prev => (prev + 1) % testimonials.length);
+      setStart(prev =>
+        prev + perView >= testimonials.length ? 0 : prev + perView
+      );
     }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [perView]);
+
+  const visible = testimonials.slice(start, start + perView);
 
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>What Our Customers Say</h2>
 
-      <div className={styles.viewport}>
-        <div
-          className={styles.slider}
-          style={{
-            transform: `translateX(-${index * 33.3333}%)`,
-          }}
-        >
-          {testimonials.map((review, i) => (
-            <div key={i} className={styles.card}>
-              <img src={review.image} className={styles.image} />
-              <h3 className={styles.name}>{review.name}</h3>
-              <p className={styles.text}>{review.text}</p>
-            </div>
-          ))}
-        </div>
+      <div className={styles.grid}>
+        {visible.map((review, i) => (
+          <div key={i} className={styles.card}>
+            <img src={review.image} className={styles.image} />
+            <h3 className={styles.name}>{review.name}</h3>
+            <p className={styles.text}>{review.text}</p>
+          </div>
+        ))}
       </div>
     </div>
   );

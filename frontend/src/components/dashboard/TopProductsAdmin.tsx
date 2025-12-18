@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { IoClose } from "react-icons/io5";
 import styles from "@/style/dashboard/topproductsadmin.module.css";
 
 const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
@@ -8,6 +9,8 @@ const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 export default function TopProductsAdmin() {
   const [products, setProducts] = useState<any[]>([]);
   const [slots, setSlots] = useState<any[]>([]);
+  const [activeSlot, setActiveSlot] = useState<number | null>(null);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     fetch(`${API}/api/products`)
@@ -30,16 +33,19 @@ export default function TopProductsAdmin() {
       body: JSON.stringify({ slot, productId }),
     });
 
+    setActiveSlot(null);
+    setSearch("");
     fetchSlots();
   };
 
   const remove = async (slot: number) => {
-    await fetch(`${API}/api/top-products/${slot}`, {
-      method: "DELETE",
-    });
-
+    await fetch(`${API}/api/top-products/${slot}`, { method: "DELETE" });
     fetchSlots();
   };
+
+  const filteredProducts = products.filter(p =>
+    p.name.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <div className={styles.wrapper}>
@@ -51,7 +57,7 @@ export default function TopProductsAdmin() {
           const filled = slots.find(s => s.slot === slotNo);
 
           return (
-            <div key={slotNo} className={styles.slot}>
+            <div key={slotNo} className={styles.slotCard}>
               <p className={styles.slotTitle}>Slot {slotNo}</p>
 
               {filled ? (
@@ -59,8 +65,9 @@ export default function TopProductsAdmin() {
                   <img
                     src={filled.productId.images?.[0]}
                     className={styles.image}
+                    alt={filled.productId.name}
                   />
-                  <p>{filled.productId.name}</p>
+                  <p className={styles.name}>{filled.productId.name}</p>
 
                   <button
                     className={styles.removeBtn}
@@ -70,24 +77,67 @@ export default function TopProductsAdmin() {
                   </button>
                 </>
               ) : (
-                <select
-                  onChange={(e) =>
-                    assign(slotNo, e.target.value)
-                  }
-                  defaultValue=""
+                <button
+                  className={styles.addBtn}
+                  onClick={() => setActiveSlot(slotNo)}
                 >
-                  <option value="">Select product</option>
-                  {products.map(p => (
-                    <option key={p._id} value={p._id}>
-                      {p.name}
-                    </option>
-                  ))}
-                </select>
+                  Select Product
+                </button>
               )}
             </div>
           );
         })}
       </div>
+
+      {/* 🔍 SEARCH MODAL */}
+      {activeSlot && (
+        <div className={styles.modal}>
+          <div className={styles.modalCard}>
+            {/* HEADER */}
+            <div className={styles.modalHeader}>
+              <h3>Select Product for Slot {activeSlot}</h3>
+              <button
+                className={styles.closeIcon}
+                onClick={() => setActiveSlot(null)}
+              >
+                <IoClose />
+              </button>
+            </div>
+
+            <input
+              type="text"
+              placeholder="Search product..."
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              className={styles.searchInput}
+            />
+
+            <div className={styles.productList}>
+              {filteredProducts.length ? (
+                filteredProducts.map(p => (
+                  <div
+                    key={p._id}
+                    className={styles.productItem}
+                    onClick={() => assign(activeSlot, p._id)}
+                  >
+                    <img src={p.images?.[0]} alt={p.name} />
+                    <span>{p.name}</span>
+                  </div>
+                ))
+              ) : (
+                <p className={styles.empty}>No products found</p>
+              )}
+            </div>
+
+            <button
+              className={styles.cancelBtn}
+              onClick={() => setActiveSlot(null)}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -4,7 +4,7 @@ import Header from "@/components/home/Header";
 import Footer from "@/components/home/Footer";
 import Link from "next/link";
 import { IoShareSocial } from "react-icons/io5";
-import styles from "@/style/home/topproducts.module.css";
+import styles from "@/style/home/productcat.module.css";
 
 const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
@@ -46,23 +46,6 @@ export default function CategoryProductsPage() {
     }
   };
 
-  const shareBtnStyle: React.CSSProperties = {
-    position: "absolute",
-    top: "10px",
-    right: "10px",
-    background: "#fff",
-    border: "none",
-    borderRadius: "50%",
-    padding: "6px",
-    cursor: "pointer",
-    color: "#C724B1",
-    fontSize: "18px",
-    boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
-  };
-
-  const formatPrice = (p: any) =>
-    Number(p?.totalPrice || 0).toLocaleString("en-IN");
-
   return (
     <>
       <Header />
@@ -74,15 +57,24 @@ export default function CategoryProductsPage() {
 
         <div className={styles.grid}>
           {products.map(p => (
-            <div key={p._id} className={styles.card} style={{ position: "relative" }}>
-              <button style={shareBtnStyle} onClick={() => shareProduct(p)}>
+            <div key={p._id} className={styles.card}>
+              
+              {/* ✅ SHARE BUTTON */}
+              <button
+                className={styles.shareBtn}
+                onClick={() => shareProduct(p)}
+              >
                 <IoShareSocial />
               </button>
 
-              <img src={p.images?.[0]} className={styles.image} />
+              {/* ✅ IMAGE WRAPPER */}
+              <div className={styles.imageWrapper}>
+                <img src={p.images?.[0]} className={styles.image} />
+              </div>
+
               <h3 className={styles.name}>{p.name}</h3>
               <p className={styles.weight}>Weight: {p.weight} gm</p>
-              <p className={styles.price}>₹{formatPrice(p)}</p>
+              <p className={styles.price}>₹{Number(p?.totalPrice || 0).toLocaleString("en-IN")}</p>
 
               <div className={styles.buttonRow}>
                 <button className={styles.cartBtn} onClick={() => addToCart(p)}>

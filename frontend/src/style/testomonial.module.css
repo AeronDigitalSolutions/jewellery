@@ -10,32 +10,21 @@
   margin-bottom: 30px;
 }
 
-/* MASK */
-.viewport {
-  overflow: hidden;
-  width: 100%;
-}
-
-/* SLIDER TRACK */
-.slider {
-  display: flex;
-  transition: transform 0.6s ease-in-out;
+/* GRID — NO SLIDER */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  animation: fade 0.6s ease-in-out;
 }
 
 /* CARD */
 .card {
-  flex: 0 0 33.3333%;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-/* CARD INNER */
-.card {
   background: #fff;
   border: 2px solid #9a248a;
   border-radius: 15px;
+  padding: 25px 20px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  margin: 0 10px;
 }
 
 /* IMAGE */
@@ -50,7 +39,7 @@
 
 /* NAME */
 .name {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   color: #C724B1;
   margin-bottom: 10px;
@@ -58,26 +47,33 @@
 
 /* TEXT */
 .text {
-  font-size: 16px;
+  font-size: 15px;
   color: #444;
   line-height: 1.5;
 }
 
-/* ================= TABLET ================= */
-@media (max-width: 992px) {
-  .card {
-    flex: 0 0 50%;
+/* FADE EFFECT */
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
   }
-
-  .slider {
-    transform: translateX(calc(var(--index) * -50%));
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
-/* ================= MOBILE ================= */
+/* TABLET */
+@media (max-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* MOBILE */
 @media (max-width: 600px) {
-  .card {
-    flex: 0 0 100%;
-    margin: 0;
+  .grid {
+    grid-template-columns: 1fr;
   }
 }

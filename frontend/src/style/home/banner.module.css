@@ -1,22 +1,25 @@
 .banner {
-  width: 100%;
-  height: auto;
-  overflow: hidden;
   position: relative;
-}
-
-.slider {
-  display: flex;
-  height: auto;
   width: 100%;
-  transition: transform 0.6s ease-in-out;
+  height: 60vh;
+  overflow: hidden;
 }
 
+/* ALL IMAGES STACKED */
 .image {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+/* ONLY ACTIVE IMAGE VISIBLE */
+.active {
+  opacity: 1;
+  z-index: 1;
 }
 
 /* ARROWS */
@@ -25,57 +28,52 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  padding: 10px;
-  color: white;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  border: none;
+  font-size: 26px;
+  padding: 12px;
   border-radius: 50%;
   cursor: pointer;
-  border: none;
-  font-size: 24px;
+  z-index: 10;
 }
 
 .arrowLeft {
-  left: 10px;
+  left: 16px;
 }
 
 .arrowRight {
-  right: 10px;
+  right: 16px;
 }
 
 /* DOTS */
 .dots {
   position: absolute;
-  bottom: 15px;
+  bottom: 16px;
   width: 100%;
   text-align: center;
+  z-index: 10;
 }
 
 .dot {
   width: 10px;
   height: 10px;
   background: white;
-  display: inline-block;
   border-radius: 50%;
-  margin: 0 5px;
-  opacity: 0.5;
+  display: inline-block;
+  margin: 0 6px;
+  opacity: 0.4;
   cursor: pointer;
 }
 
 .activeDot {
   opacity: 1;
-  background: #C724B1;
+  background: #c724b1;
 }
 
-/* RESPONSIVE */
+/* MOBILE */
 @media (max-width: 768px) {
   .banner {
-    height: 20vh;
-    width: 100%;
-  }
-
-  .arrowLeft,
-  .arrowRight {
-    padding: 6px;
-    font-size: 20px;
+    height: 22vh;
   }
 }
