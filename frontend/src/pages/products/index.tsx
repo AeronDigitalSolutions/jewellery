@@ -21,8 +21,10 @@ export default function AllProductsPage() {
   const addToCart = (product: any) => {
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
     const existing = cart.find((i: any) => i._id === product._id);
+
     if (existing) existing.qty += 1;
     else cart.push({ ...product, qty: 1 });
+
     localStorage.setItem("cart", JSON.stringify(cart));
     window.dispatchEvent(new Event("cartUpdated"));
   };
@@ -34,20 +36,6 @@ export default function AllProductsPage() {
       navigator.clipboard.writeText(url);
       alert("Product link copied!");
     }
-  };
-
-  const shareBtnStyle: React.CSSProperties = {
-    position: "absolute",
-    top: "10px",
-    right: "10px",
-    background: "#fff",
-    border: "none",
-    borderRadius: "50%",
-    padding: "6px",
-    cursor: "pointer",
-    color: "#C724B1",
-    fontSize: "18px",
-    boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
   };
 
   const formatPrice = (p: any) =>
@@ -62,22 +50,40 @@ export default function AllProductsPage() {
 
         <div className={styles.grid}>
           {products.map(p => (
-            <div key={p._id} className={styles.card} style={{ position: "relative" }}>
-              <button style={shareBtnStyle} onClick={() => shareProduct(p)}>
+            <div key={p._id} className={styles.card}>
+              {/* SHARE BUTTON */}
+              <button
+                className={styles.shareBtn}
+                onClick={() => shareProduct(p)}
+              >
                 <IoShareSocial />
               </button>
 
-              <img src={p.images?.[0]} className={styles.image} />
+              {/* IMAGE WRAPPER */}
+              <div className={styles.imageWrapper}>
+                <img
+                  src={p.images?.[0]}
+                  alt={p.name}
+                  className={styles.image}
+                />
+              </div>
+
               <h3 className={styles.name}>{p.name}</h3>
               <p className={styles.weight}>Weight: {p.weight} gm</p>
               <p className={styles.price}>₹{formatPrice(p)}</p>
 
               <div className={styles.buttonRow}>
-                <button className={styles.cartBtn} onClick={() => addToCart(p)}>
+                <button
+                  className={styles.cartBtn}
+                  onClick={() => addToCart(p)}
+                >
                   Add to Cart
                 </button>
 
-                <Link href={`/products/${p._id}`} className={styles.detailsBtn}>
+                <Link
+                  href={`/products/${p._id}`}
+                  className={styles.detailsBtn}
+                >
                   View Details
                 </Link>
               </div>

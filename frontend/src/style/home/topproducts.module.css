@@ -10,14 +10,14 @@
   margin-bottom: 25px;
 }
 
-/* 4 columns × 3 rows */
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 25px;
-  margin-bottom: 30px;
 }
 
+/* CARD */
 .card {
   background: #fff;
   border: 2px solid #C724B1;
@@ -25,35 +25,60 @@
   padding: 15px;
   transition: 0.3s;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    overflow: hidden;
-
+  position: relative;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  border-color: #9a248a;
+/* SHARE BUTTON */
+.shareBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  padding: 6px;
+  cursor: pointer;
+  color: #C724B1;
+  font-size: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 5;
 }
 
-.image {
+/* IMAGE WRAPPER */
+.imageWrapper {
   width: 100%;
   height: 180px;
-  object-fit: cover;
+  overflow: hidden;
   border-radius: 10px;
-    transition: transform 0.4s ease;
-
 }
 
+/* IMAGE */
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+/* IMAGE ZOOM */
+.card:hover .image {
+  transform: scale(1.12);
+}
+
+/* NAME */
 .name {
   font-size: 18px;
   font-weight: 600;
   margin-top: 10px;
 }
 
+/* WEIGHT */
 .weight {
   font-size: 14px;
   color: gray;
 }
 
+/* PRICE */
 .price {
   font-size: 18px;
   color: #C724B1;
@@ -61,32 +86,44 @@
   margin: 6px 0;
 }
 
-.button {
-  width: 100%;
-  padding: 8px;
-  border: none;
-  background: #d2042d;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-top: 5px;
+/* BUTTON ROW */
+.buttonRow {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
 }
 
-.button:hover {
-  background: #9a248a;
-}
-
-.viewAll {
-  padding: 12px 30px;
+/* ADD TO CART */
+.cartBtn {
+  flex: 1;
+  padding: 10px;
   background: #C724B1;
-  color: #fff;
+  color: white;
   border: none;
   border-radius: 6px;
+  font-size: 15px;
   cursor: pointer;
 }
 
-.viewAll:hover {
+.cartBtn:hover {
   background: #9a248a;
+}
+
+/* DETAILS */
+.detailsBtn {
+  flex: 1;
+  padding: 10px;
+  background: white;
+  color: #C724B1;
+  border: 2px solid #C724B1;
+  border-radius: 6px;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.detailsBtn:hover {
+  background: #9a248a;
+  color: white;
 }
 
 /* RESPONSIVE */
@@ -98,105 +135,6 @@
 
 @media (max-width: 600px) {
   .grid {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 1fr;
   }
-}
-/* Button row inside each product card */
-.buttonRow {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin-top: 12px;
-}
-
-/* Add to Cart button */
-.cartBtn {
-  flex: 1;
-  padding: 10px;
-  background: #C724B1;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 15px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.cartBtn:hover {
-  background: #9a248a;
-}
-
-/* View Details button */
-.detailsBtn {
-  flex: 1;
-  padding: 10px;
-  background: white;
-  color: #C724B1;
-  border: 2px solid #C724B1;
-  border-radius: 6px;
-  font-size: 15px;
-  text-align: center;
-  cursor: pointer;
-  transition: 0.3s;
-  text-decoration: none;
-}
-
-.detailsBtn:hover {
-  background: #9a248a;
-  color: white;
-}
-.buttonRow {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin-top: 12px;
-}
-
-.cartBtn {
-  flex: 1;
-  padding: 10px;
-  background: #C724B1;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 15px;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.cartBtn:hover {
-  background: #9a248a;
-}
-
-.detailsBtn {
-  flex: 1;
-  padding: 10px;
-  background: white;
-  color: #C724B1;
-  border: 2px solid #C724B1;
-  border-radius: 6px;
-  font-size: 15px;
-  text-align: center;
-  cursor: pointer;
-  transition: 0.3s ease;
-  text-decoration: none;
-}
-
-.detailsBtn:hover {
-  background: #9a248a;
-  color: white;
-}
-.empty {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f7f7f7;
-  color: #999;
-  font-weight: 600;
-  border: 1px dashed #ccc;
-}
-
-/* ✅ IMAGE ZOOM EFFECT */
-.card:hover .image {
-  transform: scale(1.12);
 }
