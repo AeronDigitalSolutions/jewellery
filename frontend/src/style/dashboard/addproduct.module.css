@@ -1,3 +1,6 @@
+/* =========================
+   FORM CARD
+========================= */
 .card {
   background: #fff;
   padding: 25px;
@@ -9,6 +12,9 @@
   border-left: 6px solid #C724B1;
 }
 
+/* =========================
+   TITLE
+========================= */
 .title {
   font-size: 24px;
   font-weight: 700;
@@ -17,12 +23,16 @@
   margin-bottom: 20px;
 }
 
+/* =========================
+   FORM
+========================= */
 .form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
+/* INPUTS */
 .form input,
 .form select,
 .form textarea {
@@ -31,18 +41,19 @@
   border: 2px solid #d8d8d8;
   font-size: 15px;
   transition: 0.3s;
+  width: 100%;
 }
 
 .form input:focus,
 .form select:focus,
 .form textarea:focus {
   border-color: #C724B1;
+  outline: none;
 }
-/* 
-textarea {
-  min-height: 90px;
-} */
 
+/* =========================
+   SUBMIT BUTTON
+========================= */
 .submitBtn {
   background: #C724B1;
   color: white;
@@ -60,6 +71,9 @@ textarea {
   background: #9a248a;
 }
 
+/* =========================
+   IMAGE PREVIEW
+========================= */
 .previewBox {
   display: flex;
   gap: 12px;
@@ -73,4 +87,82 @@ textarea {
   border-radius: 8px;
   object-fit: cover;
   border: 2px solid #C724B1;
+}
+
+/* =========================
+   TABLET (≤ 900px)
+========================= */
+@media (max-width: 900px) {
+  .card {
+    max-width: 100%;
+    padding: 22px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+}
+
+/* =========================
+   MOBILE (≤ 600px)
+========================= */
+@media (max-width: 600px) {
+  .card {
+    padding: 18px;
+    border-left-width: 4px;
+  }
+
+  .title {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .form input,
+  .form select,
+  .form textarea {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .submitBtn {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  .preview {
+    width: 75px;
+    height: 75px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE (≤ 400px)
+========================= */
+@media (max-width: 400px) {
+  .card {
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .form {
+    gap: 12px;
+  }
+
+  .form input,
+  .form select,
+  .form textarea {
+    font-size: 13px;
+  }
+
+  .submitBtn {
+    font-size: 14px;
+  }
+
+  .preview {
+    width: 65px;
+    height: 65px;
+  }
 }

@@ -1,19 +1,28 @@
-/* MAIN WRAPPER */
+/* =========================
+   ROOT LAYOUT
+========================= */
 .wrapper {
   display: flex;
   width: 100%;
   min-height: 100vh;
   background: #f8f9fb;
   font-family: "Inter", sans-serif;
+  position: relative;
 }
 
-/* SIDEBAR */
+/* =========================
+   SIDEBAR
+========================= */
 .sidebar {
   width: 250px;
   background: #ffffff;
   padding: 25px 20px;
   border-right: 1px solid #e3e3e3;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s ease;
+  z-index: 120;
 }
 
 .sidebar h2 {
@@ -21,37 +30,64 @@
   font-weight: 700;
   margin-bottom: 25px;
   color: #9a248a;
+  margin-top: 5rem;
 }
 
+/* =========================
+   MENU ITEMS
+========================= */
 .menuItem {
-  padding: 12px 15px;
-  margin-bottom: 10px;
-  border-radius: 8px;
+  padding: 12px 16px;
   cursor: pointer;
-  font-size: 15px;
+  border-radius: 6px;
   color: #333;
-  transition: 0.25s ease;
+  font-weight: 500;
+  margin-bottom: 8px;
+  transition: 0.3s;
 }
 
 .menuItem:hover {
-  background: #f0d3d3;
+  background: #fdeaea;
   color: #9a248a;
 }
 
-/* ACTIVE MENU */
 .active {
-  background: #9a248a;
-  color: white !important;
-  font-weight: 600;
+  background: #C724B1;
+  color: #fff !important;
 }
 
-/* MAIN CONTENT */
+/* =========================
+   LOGOUT
+========================= */
+.logoutBtn {
+  margin-top: auto;
+  padding: 12px;
+  background: #c724b1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  width: 100%;
+  transition: 0.3s ease;
+}
+
+.logoutBtn:hover {
+  background: #9a248a;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
 .content {
   flex: 1;
   padding: 30px;
+  transition: margin-left 0.35s ease;
 }
 
-/* DASHBOARD HEADER */
+/* =========================
+   HEADERS
+========================= */
 .pageHeader {
   font-size: 26px;
   font-weight: 700;
@@ -64,7 +100,9 @@
   margin-bottom: 25px;
 }
 
-/* DASHBOARD CARDS ROW */
+/* =========================
+   DASHBOARD CARDS
+========================= */
 .cardsRow {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -92,60 +130,99 @@
   margin-top: 5px;
 }
 
-/* CURRENT METAL SECTION */
-.sectionBox {
-  background: white;
-  padding: 20px;
-  border-radius: 14px;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e7e7e7;
-  margin-bottom: 25px;
-}
-
-/* QUICK ACTIONS */
-.actionItem {
-  background: #f6f0f0;
-  padding: 12px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  transition: 0.2s ease;
-  border: 1px solid #e3d5d5;
-}
-
-.actionItem:hover {
-  background: #e2caca;
-}
-.menuItem {
-  padding: 12px 16px;
-  cursor: pointer;
-  border-radius: 6px;
-  color: #333;
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-.menuItem:hover {
-  background: #fdeaea;
-}
-
-.active {
+/* =========================
+   HAMBURGER BUTTON
+========================= */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  font-size: 26px;
   background: #C724B1;
-  color: #fff;
-}
-.logoutBtn {
-  margin-top: auto;
-  padding: 12px;
-  background: #c724b1;
   color: white;
-  border: none;
   border-radius: 6px;
+  padding: 6px 10px;
   cursor: pointer;
-  font-size: 15px;
-  width: 100%;
+  z-index: 200;
   transition: 0.3s ease;
 }
 
-.logoutBtn:hover {
+/* CLOSE STATE */
+.hamburgerOpen {
   background: #9a248a;
+}
+
+/* =========================
+   OVERLAY (MOBILE)
+========================= */
+.overlay {
+  display: none;
+}
+
+/* =========================
+   TABLET (≤ 1024px)
+========================= */
+@media (max-width: 1024px) {
+  .cardsRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================
+   MOBILE (≤ 768px)
+========================= */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  /* SIDEBAR MOBILE */
+  .sidebar {
+    position: fixed;
+    top: 70px; /* ✅ FIX: BELOW HAMBURGER */
+    left: 0;
+    height: calc(100vh - 70px);
+    transform: translateX(-100%);
+    padding-top: 20px;
+  }
+
+  .sidebarOpen {
+    transform: translateX(0);
+  }
+
+  .content {
+    padding: 20px;
+    margin-top: 3rem;
+  }
+
+  .cardsRow {
+    grid-template-columns: 1fr;
+  }
+
+  /* OVERLAY */
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 100;
+  }
+}
+
+/* =========================
+   SMALL MOBILE (≤ 480px)
+========================= */
+@media (max-width: 480px) {
+  .pageHeader {
+    font-size: 22px;
+  }
+
+  .subHeader {
+    font-size: 14px;
+  }
+
+  .cardValue {
+    font-size: 20px;
+  }
 }

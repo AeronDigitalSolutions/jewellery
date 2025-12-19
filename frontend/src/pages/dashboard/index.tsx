@@ -19,24 +19,23 @@ const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 export default function Dashboard() {
   const router = useRouter();
   const [active, setActive] = useState<number>(-1);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  // 📊 DASHBOARD STATS (NO USERS)
+  // 📊 DASHBOARD STATS
   const [stats, setStats] = useState({
     products: 0,
     categories: 0,
   });
 
   const handleLogout = () => {
-  localStorage.removeItem("token");
-  router.replace("/login");
-};
-
+    localStorage.removeItem("token");
+    router.replace("/login");
+  };
 
   // 🔐 AUTH CHECK
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      alert("Please login first!");
       router.push("/login");
     }
   }, [router]);
@@ -84,7 +83,6 @@ export default function Dashboard() {
         Welcome to your jewellery management panel
       </p>
 
-      {/* 📊 STATS */}
       <div className={styles.cardsRow}>
         <div className={styles.cardBox}>
           <p className={styles.cardTitle}>Total Products</p>
@@ -129,32 +127,52 @@ export default function Dashboard() {
 
   return (
     <div className={styles.wrapper}>
-      {/* SIDEBAR */}
-      {/* SIDEBAR */}
-<div className={styles.sidebar}>
-  <h2 className={styles.sidebarTitle}>Admin Panel</h2>
-
-  {menu.map(item => (
-    <div
-      key={item.id}
-      className={`${styles.menuItem} ${
-        active === item.id ? styles.active : ""
-      }`}
-      onClick={() => setActive(item.id)}
-    >
-      {item.name}
-    </div>
-  ))}
-
-  {/* LOGOUT BUTTON */}
-  <button
-    className={styles.logoutBtn}
-    onClick={handleLogout}
-  >
-    Logout
-  </button>
+      {/* 🍔 HAMBURGER */}
+      <div
+  className={`${styles.hamburger} ${
+    sidebarOpen ? styles.hamburgerOpen : ""
+  }`}
+  onClick={() => setSidebarOpen(!sidebarOpen)}
+>
+  {sidebarOpen ? "✕" : "☰"}
 </div>
 
+
+      {/* OVERLAY */}
+      {sidebarOpen && (
+        <div
+          className={styles.overlay}
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      {/* SIDEBAR */}
+      <div
+        className={`${styles.sidebar} ${
+          sidebarOpen ? styles.sidebarOpen : ""
+        }`}
+      >
+        <h2 className={styles.sidebarTitle}>Admin Panel</h2>
+
+        {menu.map(item => (
+          <div
+            key={item.id}
+            className={`${styles.menuItem} ${
+              active === item.id ? styles.active : ""
+            }`}
+            onClick={() => {
+              setActive(item.id);
+              setSidebarOpen(false); // ✅ close on click (mobile)
+            }}
+          >
+            {item.name}
+          </div>
+        ))}
+
+        <button className={styles.logoutBtn} onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
 
       {/* MAIN CONTENT */}
       <div className={styles.content}>{renderComponent()}</div>

@@ -17,74 +17,79 @@ export default function Price() {
   useEffect(() => {
     fetch(`${API}/api/metals`)
       .then(res => res.json())
-      .then(data => setMetals(data))
+      .then(setMetals)
       .catch(err => console.error("Price fetch failed", err));
   }, []);
 
+  if (!metals.length) return null;
+
   return (
     <>
-      {/* ===== PRICE MARQUEE ===== */}
-      <div className="priceMarqueeWrapper">
-        <div className="priceMarquee">
-          {metals.map((m, index) => (
-            <span key={m._id} className="priceItem">
-              <strong>{m.name}</strong> : ₹{m.price.toLocaleString("en-IN")}
+      <div className="marqueeWrapper">
+        <div className="marqueeTrack">
+          {/* FIRST COPY */}
+          {metals.map(m => (
+            <span key={m._id} className="item">
+              <strong>{m.name}</strong> ₹{m.price.toLocaleString("en-IN")}
               {m.perGram ? "/gm" : ""}
-              {index !== metals.length - 1 && <span className="divider"> | </span>}
+            </span>
+          ))}
+
+          {/* SECOND COPY (DUPLICATE) */}
+          {metals.map(m => (
+            <span key={`${m._id}-dup`} className="item">
+              <strong>{m.name}</strong> ₹{m.price.toLocaleString("en-IN")}
+              {m.perGram ? "/gm" : ""}
             </span>
           ))}
         </div>
       </div>
 
-      {/* ===== INTERNAL CSS ===== */}
+      {/* ✅ INTERNAL CSS */}
       <style jsx>{`
-        .priceMarqueeWrapper {
+        .marqueeWrapper {
           width: 100%;
           overflow: hidden;
           background: linear-gradient(90deg, #c724b1, #9a248a);
-          padding: 10px 0;
         }
 
-        .priceMarquee {
-          display: inline-block;
-          white-space: nowrap;
-          animation: scroll 18s linear infinite;
-          padding-left: 100%;
+        .marqueeTrack {
+          display: flex;
+          width: max-content;
+          animation: marquee 20s linear infinite;
         }
 
-        .priceMarqueeWrapper:hover .priceMarquee {
+        .marqueeWrapper:hover .marqueeTrack {
           animation-play-state: paused;
         }
 
-        .priceItem {
+        .item {
+          white-space: nowrap;
+          padding: 10px 24px;
           color: #fff;
           font-size: 16px;
           font-weight: 500;
-          margin-right: 20px;
         }
 
-        .priceItem strong {
+        .item strong {
           font-weight: 700;
+          margin-right: 4px;
         }
 
-        .divider {
-          margin: 0 12px;
-          color: #ffd6fa;
-        }
-
-        @keyframes scroll {
+        @keyframes marquee {
           0% {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(-100%);
+            transform: translateX(-50%);
           }
         }
 
         /* MOBILE */
         @media (max-width: 768px) {
-          .priceItem {
+          .item {
             font-size: 14px;
+            padding: 8px 16px;
           }
         }
       `}</style>

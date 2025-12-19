@@ -1,11 +1,16 @@
-/* MAIN WRAPPER */
+/* =========================
+   MAIN WRAPPER
+========================= */
 .wrapper {
   display: flex;
   gap: 30px;
   padding: 20px;
+  align-items: flex-start;
 }
 
-/* FORM CARD */
+/* =========================
+   FORM CARD (ADD CATEGORY)
+========================= */
 .card {
   flex: 1;
   background: #ffffff;
@@ -14,6 +19,9 @@
   border-radius: 12px;
 }
 
+/* =========================
+   TITLES
+========================= */
 .title {
   font-size: 22px;
   font-weight: 700;
@@ -21,7 +29,9 @@
   margin-bottom: 15px;
 }
 
-/* FORM INPUTS */
+/* =========================
+   FORM INPUTS
+========================= */
 .form input {
   width: 100%;
   padding: 12px;
@@ -53,7 +63,9 @@
   color: #222 !important;
 }
 
-/* IMAGE PREVIEW */
+/* =========================
+   IMAGE PREVIEW
+========================= */
 .preview {
   width: 120px;
   height: 120px;
@@ -63,7 +75,9 @@
   border: 2px solid #C724B1;
 }
 
-/* CATEGORY LIST */
+/* =========================
+   CATEGORY LIST CARD
+========================= */
 .listCard {
   flex: 1;
   background: #ffffff;
@@ -79,7 +93,9 @@
   margin-bottom: 15px;
 }
 
-/* EACH ROW */
+/* =========================
+   LIST ITEM
+========================= */
 .listItem {
   display: flex;
   align-items: center;
@@ -93,6 +109,7 @@
   width: 80px;
   font-weight: bold;
   color: #C724B1;
+  font-size: 14px;
 }
 
 /* CATEGORY IMAGE */
@@ -133,9 +150,109 @@
   cursor: pointer;
 }
 
-/* MOBILE FRIENDLY */
+/* =========================
+   TABLET (≤ 900px)
+========================= */
 @media (max-width: 900px) {
   .wrapper {
     flex-direction: column;
+    padding: 16px;
+  }
+
+  .card,
+  .listCard {
+    width: 100%;
+  }
+}
+
+/* =========================
+   MOBILE (≤ 600px)
+   ✅ ADD FORM FIRST, LIST SECOND
+========================= */
+@media (max-width: 600px) {
+  .wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* ORDER FIX */
+  .card {
+    order: 1; /* Add Category FIRST */
+  }
+
+  .listCard {
+    order: 2; /* List AFTER */
+  }
+
+  .title,
+  .listTitle {
+    font-size: 18px;
+  }
+
+  .form input,
+  .form button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .preview {
+    width: 100px;
+    height: 100px;
+  }
+
+  .listItem {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .catId {
+    width: 100%;
+    font-size: 13px;
+  }
+
+  .listImg {
+    width: 50px;
+    height: 50px;
+  }
+
+  .catName {
+    width: 100%;
+    font-size: 15px;
+    margin: 6px 0;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .editBtn,
+  .deleteBtn {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE (≤ 400px)
+========================= */
+@media (max-width: 400px) {
+  .wrapper {
+    padding: 12px;
+  }
+
+  .card,
+  .listCard {
+    padding: 15px;
+  }
+
+  .form input,
+  .form button {
+    font-size: 13px;
+  }
+
+  .editBtn,
+  .deleteBtn {
+    font-size: 12px;
   }
 }

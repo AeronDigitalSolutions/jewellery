@@ -1,27 +1,41 @@
+/* =========================
+   CARD
+========================= */
 .card {
   background: #ffffff;
   padding: 24px;
   border-radius: 12px;
   max-width: 520px;
+  width: 100%;
+  margin: auto;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
+/* =========================
+   TITLE
+========================= */
 .title {
   font-size: 20px;
   font-weight: 700;
   color: #C724B1;
   margin-bottom: 16px;
+  text-align: center;
 }
 
-/* FORM WRAPPER */
+/* =========================
+   FORM WRAPPER
+========================= */
 .form {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-/* INPUTS */
+/* =========================
+   INPUTS
+========================= */
 .input {
+  width: 100%;
   padding: 10px 12px;
   border-radius: 6px;
   border: 1px solid #ccc;
@@ -34,13 +48,17 @@
   border-color: #C724B1;
 }
 
-/* TEXTAREA */
+/* =========================
+   TEXTAREA
+========================= */
 .textarea {
   min-height: 90px;
   resize: vertical;
 }
 
-/* BUTTON */
+/* =========================
+   SUBMIT BUTTON
+========================= */
 .submitBtn {
   background: #C724B1;
   color: #ffffff;
@@ -60,4 +78,69 @@
 
 .submitBtn:active {
   transform: translateY(0);
+}
+
+/* =========================
+   TABLET (≤ 900px)
+========================= */
+@media (max-width: 900px) {
+  .card {
+    max-width: 100%;
+    padding: 22px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+}
+
+/* =========================
+   MOBILE (≤ 600px)
+========================= */
+@media (max-width: 600px) {
+  .card {
+    padding: 18px;
+    border-radius: 10px;
+  }
+
+  .title {
+    font-size: 17px;
+    margin-bottom: 14px;
+  }
+
+  .input {
+    font-size: 13px;
+    padding: 9px 10px;
+  }
+
+  .textarea {
+    min-height: 80px;
+  }
+
+  .submitBtn {
+    font-size: 13px;
+    padding: 9px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE (≤ 400px)
+========================= */
+@media (max-width: 400px) {
+  .card {
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .input {
+    font-size: 12px;
+  }
+
+  .submitBtn {
+    font-size: 12px;
+    padding: 8px;
+  }
 }
