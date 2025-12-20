@@ -5,7 +5,7 @@ import Header from "@/components/home/Header";
 import Footer from "@/components/home/Footer";
 import Link from "next/link";
 import { IoShareSocial } from "react-icons/io5";
-import styles from "@/style/home/topproducts.module.css";
+import styles from "@/style/products.module.css";
 
 const API = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 

@@ -19,18 +19,13 @@
 
 /* CARD */
 .card {
-  position: relative;
   background: #fff;
   border: 2px solid #C724B1;
   border-radius: 12px;
   padding: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  border-color: #9a248a;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  position: relative;
 }
 
 /* SHARE BUTTON */
@@ -38,7 +33,6 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  z-index: 5;
   background: #fff;
   border: none;
   border-radius: 50%;
@@ -47,6 +41,7 @@
   color: #C724B1;
   font-size: 18px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 5;
 }
 
 /* IMAGE WRAPPER */
@@ -65,23 +60,25 @@
   transition: transform 0.4s ease;
 }
 
-/* ZOOM EFFECT */
+/* IMAGE ZOOM */
 .card:hover .image {
   transform: scale(1.12);
 }
 
-/* TEXT */
+/* NAME */
 .name {
   font-size: 18px;
   font-weight: 600;
   margin-top: 10px;
 }
 
+/* WEIGHT */
 .weight {
   font-size: 14px;
   color: gray;
 }
 
+/* PRICE */
 .price {
   font-size: 18px;
   color: #C724B1;
@@ -96,6 +93,7 @@
   margin-top: 12px;
 }
 
+/* ADD TO CART */
 .cartBtn {
   flex: 1;
   padding: 10px;
@@ -103,6 +101,7 @@
   color: white;
   border: none;
   border-radius: 6px;
+  font-size: 15px;
   cursor: pointer;
 }
 
@@ -110,6 +109,7 @@
   background: #9a248a;
 }
 
+/* DETAILS */
 .detailsBtn {
   flex: 1;
   padding: 10px;
@@ -117,8 +117,8 @@
   color: #C724B1;
   border: 2px solid #C724B1;
   border-radius: 6px;
+  font-size: 15px;
   text-decoration: none;
-  text-align: center;
 }
 
 .detailsBtn:hover {
@@ -140,13 +140,13 @@
 }
 
 /* ===================================================
-   ✅ FINAL OVERRIDE — FORCE 1:1 SQUARE IMAGE
+   ✅ FINAL SAFE OVERRIDES — FORCE 1:1 SQUARE IMAGES
 =================================================== */
 
-/* Force square container */
+/* Make wrapper square */
 .imageWrapper {
-  aspect-ratio: 1 / 1;        /* 🔥 square */
-  height: auto !important;    /* override fixed height */
+  aspect-ratio: 1 / 1;     /* 🔥 force square */
+  height: auto !important; /* 🔥 override fixed height */
 }
 
 /* Ensure image fills square correctly */
@@ -156,7 +156,7 @@
   object-fit: cover;
 }
 
-/* Prevent hover zoom clipping share button */
+/* Prevent zoom from hiding share button */
 .card {
-  overflow: visible;
+  overflow: hidden;
 }

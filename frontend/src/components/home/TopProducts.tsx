@@ -35,27 +35,11 @@ export default function TopProducts() {
 
   const shareProduct = (product: any) => {
     const url = `${window.location.origin}/products/${product._id}`;
-    if (navigator.share) {
-      navigator.share({ title: product.name, url });
-    } else {
+    if (navigator.share) navigator.share({ title: product.name, url });
+    else {
       navigator.clipboard.writeText(url);
       alert("Product link copied!");
     }
-  };
-
-  const shareBtnStyle: React.CSSProperties = {
-    position: "absolute",
-    top: "10px",
-    right: "10px",
-    background: "#fff",
-    border: "none",
-    borderRadius: "50%",
-    padding: "6px",
-    cursor: "pointer",
-    color: "#C724B1",
-    fontSize: "18px",
-    boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
-    zIndex: 5, // ✅ FIX: keeps icon above image on hover
   };
 
   const formatPrice = (price: number) =>
@@ -68,21 +52,20 @@ export default function TopProducts() {
       <div className={styles.grid}>
         {slots.map((p, i) =>
           p ? (
-            <div
-              key={p._id}
-              className={styles.card}
-              style={{ position: "relative" }}
-            >
-              {/* SHARE ICON */}
+            <div key={p._id} className={styles.card}>
+              {/* SHARE BUTTON */}
               <button
-                style={shareBtnStyle}
+                className={styles.shareBtn}
                 onClick={() => shareProduct(p)}
-                aria-label="Share product"
               >
                 <IoShareSocial />
               </button>
 
-              <img src={p.images?.[0]} className={styles.image} />
+              {/* ✅ IMAGE WRAPPER (FIX) */}
+              <div className={styles.imageWrapper}>
+                <img src={p.images?.[0]} className={styles.image} />
+              </div>
+
               <h3 className={styles.name}>{p.name}</h3>
               <p className={styles.weight}>Weight: {p.weight} gm</p>
               <p className={styles.price}>
@@ -113,11 +96,8 @@ export default function TopProducts() {
         )}
       </div>
 
-      {/* ✅ RESTORED VIEW ALL BUTTON */}
       <Link href="/products">
-        <button className={styles.viewAll}>
-          View All Products
-        </button>
+        <button className={styles.viewAll}>View All Products</button>
       </Link>
     </div>
   );

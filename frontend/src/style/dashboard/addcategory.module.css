@@ -75,6 +75,14 @@
   border: 2px solid #C724B1;
 }
 
+/* ✅ IMAGE ERROR */
+.imageError {
+  color: #d2042d;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
 /* =========================
    CATEGORY LIST CARD
 ========================= */
@@ -167,7 +175,6 @@
 
 /* =========================
    MOBILE (≤ 600px)
-   ✅ ADD FORM FIRST, LIST SECOND
 ========================= */
 @media (max-width: 600px) {
   .wrapper {
@@ -175,13 +182,12 @@
     gap: 20px;
   }
 
-  /* ORDER FIX */
   .card {
-    order: 1; /* Add Category FIRST */
+    order: 1;
   }
 
   .listCard {
-    order: 2; /* List AFTER */
+    order: 2;
   }
 
   .title,
@@ -198,38 +204,6 @@
   .preview {
     width: 100px;
     height: 100px;
-  }
-
-  .listItem {
-    flex-wrap: wrap;
-    align-items: flex-start;
-  }
-
-  .catId {
-    width: 100%;
-    font-size: 13px;
-  }
-
-  .listImg {
-    width: 50px;
-    height: 50px;
-  }
-
-  .catName {
-    width: 100%;
-    font-size: 15px;
-    margin: 6px 0;
-  }
-
-  .actions {
-    width: 100%;
-    justify-content: flex-end;
-  }
-
-  .editBtn,
-  .deleteBtn {
-    font-size: 13px;
-    padding: 6px 10px;
   }
 }
 
@@ -249,10 +223,5 @@
   .form input,
   .form button {
     font-size: 13px;
-  }
-
-  .editBtn,
-  .deleteBtn {
-    font-size: 12px;
   }
 }

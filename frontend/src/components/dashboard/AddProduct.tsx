@@ -19,10 +19,11 @@ interface Metal {
 export default function AddProduct() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [metals, setMetals] = useState<Metal[]>([]);
+  const [imageError, setImageError] = useState("");
 
   const [form, setForm] = useState({
     name: "",
-    category: "", // ✅ ObjectId
+    category: "",
     metalId: "",
     metalPrice: 0,
     weight: "",
@@ -104,20 +105,35 @@ export default function AddProduct() {
     });
   };
 
-  /* ================= IMAGES ================= */
-  const handleImages = (e: any) => {
-    const files = Array.from(e.target.files);
+  /* ================= IMAGES (1:1 VALIDATION) ================= */
+  const handleImages = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || []);
+    setImageError("");
 
-    files.forEach((file: any) => {
+    files.forEach(file => {
       const reader = new FileReader();
-      reader.onloadend = () => {
-        setForm(prev => ({
-          ...prev,
-          images: [...prev.images, reader.result as string],
-        }));
+
+      reader.onload = () => {
+        const img = new Image();
+        img.src = reader.result as string;
+
+        img.onload = () => {
+          if (img.width !== img.height) {
+            setImageError("❌ Only 1:1 (square) images are allowed");
+            return;
+          }
+
+          setForm(prev => ({
+            ...prev,
+            images: [...prev.images, reader.result as string],
+          }));
+        };
       };
+
       reader.readAsDataURL(file);
     });
+
+    e.target.value = "";
   };
 
   /* ================= SUBMIT ================= */
@@ -126,7 +142,7 @@ export default function AddProduct() {
 
     const payload = {
       name: form.name,
-      category: form.category, // ✅ ObjectId
+      category: form.category,
       metalId: form.metalId,
       metalPrice: form.metalPrice,
       weight: Number(form.weight),
@@ -187,7 +203,6 @@ export default function AddProduct() {
           required
         />
 
-        {/* CATEGORY */}
         <select
           value={form.category}
           onChange={e => setForm({ ...form, category: e.target.value })}
@@ -195,13 +210,10 @@ export default function AddProduct() {
         >
           <option value="">Select Category</option>
           {categories.map(c => (
-            <option key={c._id} value={c._id}>
-              {c.name}
-            </option>
+            <option key={c._id} value={c._id}>{c.name}</option>
           ))}
         </select>
 
-        {/* METAL */}
         <select
           value={form.metalId}
           onChange={e => handleMetalChange(e.target.value)}
@@ -295,6 +307,10 @@ export default function AddProduct() {
         />
 
         <input type="file" multiple accept="image/*" onChange={handleImages} />
+
+        {imageError && (
+          <p className={styles.imageError}>{imageError}</p>
+        )}
 
         <div className={styles.previewBox}>
           {form.images.map((img, i) => (

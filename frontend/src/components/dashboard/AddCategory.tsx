@@ -12,19 +12,43 @@ export default function AddCategory() {
     metalType: "",
   });
 
+  const [imageError, setImageError] = useState(""); // ✅ ADDED
+
   const handleImageChange = (e: any) => {
     const file = e.target.files[0];
+    if (!file) return;
+
+    setImageError(""); // reset
+
     const reader = new FileReader();
 
     reader.onloadend = () => {
-      setForm({ ...form, image: reader.result as string });
+      const img = new Image();
+      img.src = reader.result as string;
+
+      img.onload = () => {
+        // ✅ 1:1 IMAGE CHECK
+        if (img.width !== img.height) {
+          setImageError("❌ Only 1:1 (square) images are allowed");
+          return;
+        }
+
+        setForm({ ...form, image: reader.result as string });
+      };
     };
 
-    if (file) reader.readAsDataURL(file);
+    reader.readAsDataURL(file);
+
+    e.target.value = ""; // reset input
   };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+
+    if (!form.image) {
+      alert("Please upload a 1:1 image");
+      return;
+    }
 
     const res = await fetch(`${API}/api/categories/add`, {
       method: "POST",
@@ -36,6 +60,7 @@ export default function AddCategory() {
     alert(data.msg);
 
     setForm({ name: "", image: "", metalType: "" });
+    setImageError("");
   };
 
   return (
@@ -67,7 +92,14 @@ export default function AddCategory() {
 
           <input type="file" accept="image/*" onChange={handleImageChange} />
 
-          {form.image && <img src={form.image} className={styles.preview} />}
+          {/* ✅ IMAGE ERROR MESSAGE */}
+          {imageError && (
+            <p className={styles.imageError}>{imageError}</p>
+          )}
+
+          {form.image && (
+            <img src={form.image} className={styles.preview} />
+          )}
 
           <button type="submit">Add Category</button>
         </form>
