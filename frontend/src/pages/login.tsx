@@ -25,19 +25,22 @@ export default function Login() {
       const data = await res.json();
 
       if (!res.ok) {
-        alert(data.msg);
+        alert(data.msg || "Login failed");
         setLoading(false);
         return;
       }
 
-      // Save token
+      // ✅ SAVE TOKEN
       localStorage.setItem("token", data.token);
+
+      // ✅ SET EXPIRY (15 MINUTES)
+      const expiryTime = Date.now() + 15 * 60 * 1000;
+      localStorage.setItem("tokenExpiry", expiryTime.toString());
 
       alert("Login Successful!");
 
-      // 🔥 Redirect to Dashboard
+      // 🔥 REDIRECT
       window.location.href = "/dashboard";
-
     } catch (err) {
       console.error(err);
       alert("Server error");
@@ -59,7 +62,9 @@ export default function Login() {
           placeholder="Enter your email"
           value={form.email}
           required
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
+          onChange={(e) =>
+            setForm({ ...form, email: e.target.value })
+          }
         />
 
         {/* PASSWORD */}
@@ -71,7 +76,9 @@ export default function Login() {
             placeholder="Enter your password"
             value={form.password}
             required
-            onChange={(e) => setForm({ ...form, password: e.target.value })}
+            onChange={(e) =>
+              setForm({ ...form, password: e.target.value })
+            }
           />
 
           <span
@@ -82,7 +89,11 @@ export default function Login() {
           </span>
         </div>
 
-        <button type="submit" className={styles.button}>
+        <button
+          type="submit"
+          className={styles.button}
+          disabled={loading}
+        >
           {loading ? "Logging in..." : "Login"}
         </button>
 
@@ -92,14 +103,6 @@ export default function Login() {
             Change Password?
           </Link>
         </p>
-
-        {/* Signup */}
-        {/* <p className={styles.footerText}>
-          Don’t have an account?
-          <Link href="/signup" className={styles.link}>
-            Sign Up
-          </Link> */}
-        {/* </p> */}
       </form>
     </div>
   );

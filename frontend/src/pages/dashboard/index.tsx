@@ -29,13 +29,25 @@ export default function Dashboard() {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("tokenExpiry"); // ✅ clear expiry
     router.replace("/login");
   };
 
-  // 🔐 AUTH CHECK
+  // 🔐 AUTH + SESSION EXPIRY CHECK
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (!token) {
+    const expiry = localStorage.getItem("tokenExpiry");
+
+    if (!token || !expiry) {
+      router.push("/login");
+      return;
+    }
+
+    // ⏱️ Auto logout if expired
+    if (Date.now() > Number(expiry)) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("tokenExpiry");
+      alert("Session expired. Please login again.");
       router.push("/login");
     }
   }, [router]);
@@ -129,14 +141,13 @@ export default function Dashboard() {
     <div className={styles.wrapper}>
       {/* 🍔 HAMBURGER */}
       <div
-  className={`${styles.hamburger} ${
-    sidebarOpen ? styles.hamburgerOpen : ""
-  }`}
-  onClick={() => setSidebarOpen(!sidebarOpen)}
->
-  {sidebarOpen ? "✕" : "☰"}
-</div>
-
+        className={`${styles.hamburger} ${
+          sidebarOpen ? styles.hamburgerOpen : ""
+        }`}
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+      >
+        {sidebarOpen ? "✕" : "☰"}
+      </div>
 
       {/* OVERLAY */}
       {sidebarOpen && (
@@ -162,7 +173,7 @@ export default function Dashboard() {
             }`}
             onClick={() => {
               setActive(item.id);
-              setSidebarOpen(false); // ✅ close on click (mobile)
+              setSidebarOpen(false);
             }}
           >
             {item.name}

@@ -30,7 +30,7 @@
   font-weight: 700;
   margin-bottom: 25px;
   color: #9a248a;
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 
 /* =========================
@@ -148,13 +148,12 @@
   transition: 0.3s ease;
 }
 
-/* CLOSE STATE */
 .hamburgerOpen {
   background: #9a248a;
 }
 
 /* =========================
-   OVERLAY (MOBILE)
+   OVERLAY
 ========================= */
 .overlay {
   display: none;
@@ -177,18 +176,29 @@
     display: block;
   }
 
-  /* SIDEBAR MOBILE */
+  /* ✅ MOBILE SIDEBAR – FINAL FIX */
   .sidebar {
     position: fixed;
-    top: 70px; /* ✅ FIX: BELOW HAMBURGER */
+    top: 30px;
     left: 0;
     height: calc(100vh - 70px);
     transform: translateX(-100%);
     padding-top: 20px;
+
+    /* 🔥 ENABLE SCROLL */
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
 
   .sidebarOpen {
     transform: translateX(0);
+  }
+
+  /* 🔥 CRITICAL FIX */
+  .logoutBtn {
+    margin-top: 20px;   /* ❌ remove auto */
+    margin-bottom: 20px;
   }
 
   .content {
